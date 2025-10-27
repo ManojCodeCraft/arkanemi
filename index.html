@@ -1285,16 +1285,29 @@
 
     <script>
         // Visitor Counter using CountAPI
-        async function initVisitorCounter() {
-            try {
-                const response = await fetch('https://api.countapi.xyz/hit/arkanemi-climate-2025/visits');
-                const data = await response.json();
-                document.getElementById('visitorCount').textContent = data.value.toLocaleString();
-            } catch (error) {
-                console.error('Visitor counter error:', error);
-                document.getElementById('visitorCount').textContent = '1,000+';
-            }
-        }
+       async function initVisitorCounter() {
+  const countApiUrl = 'https://api.countapi.xyz';
+  const namespace = 'arkanemi-climate-2025';
+  const key = 'visits';
+
+  try {
+    // Try to hit the counter
+    let response = await fetch(`${countApiUrl}/hit/${namespace}/${key}`);
+    
+    // If not existing, create it first then hit again
+    if (!response.ok) {
+      await fetch(`${countApiUrl}/create?namespace=${namespace}&key=${key}&value=0`);
+      response = await fetch(`${countApiUrl}/hit/${namespace}/${key}`);
+    }
+
+    const data = await response.json();
+    document.getElementById('visitorCount').textContent = data.value.toLocaleString();
+  } catch (error) {
+    console.error('Visitor counter error:', error);
+    document.getElementById('visitorCount').textContent = '1,000+';
+  }
+}
+
 
         initVisitorCounter();
 
