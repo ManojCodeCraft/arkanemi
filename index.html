@@ -1285,8 +1285,10 @@
 
     <script>
         // Visitor Counter using CountAPI
-       async function initVisitorCounter() {
-  const countApiUrl = 'https://api.countapi.xyz';
+      <script>
+async function initVisitorCounter() {
+  // ✅ use .dev domain instead of .xyz
+  const countApiUrl = 'https://api.countapi.dev';
   const namespace = 'arkanemi-climate-2025';
   const key = 'visits';
 
@@ -1307,6 +1309,11 @@
     document.getElementById('visitorCount').textContent = '1,000+';
   }
 }
+
+// Initialize counter when page loads
+initVisitorCounter();
+</script>
+
 
 
         initVisitorCounter();
