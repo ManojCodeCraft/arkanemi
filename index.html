@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARKANEMI - Climate Risk Intelligence Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2e7d32;
+            --primary-blue: #1565c0;
+            --light-green: #81c784;
+            --light-blue: #64b5f6;
+            --accent-gold: #f9a825;
+            --navy: #1a237e;
+            --gray-dark: #37474f;
+            --gray-light: #eceff1;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--gray-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: white;
+            padding: 0.75rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 70%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(129, 199, 132, 0.15) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -20%;
+            width: 70%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(100, 181, 246, 0.15) 0%, transparent 70%);
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--navy);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--gray-dark);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-blue);
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+        }
+
+        .visual-card {
+            position: absolute;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .visual-card-1 {
+            top: 0;
+            right: 0;
+            width: 280px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .visual-card-2 {
+            top: 150px;
+            left: 0;
+            width: 300px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .visual-card-3 {
+            bottom: 50px;
+            right: 50px;
+            width: 260px;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--gray-dark);
+        }
+
+        .card-stat {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 0.3rem;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .trust-text {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            padding: 0 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+            font-weight: 500;
+        }
+
+        /* Solutions Section */
+        .solutions {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--gray-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.15rem;
+            color: var(--gray-dark);
+            opacity: 0.8;
+        }
+
+        .solutions-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5));
+            border-radius: 20px;
+            padding: 3rem;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(46, 125, 50, 0.2);
+            border-color: var(--primary-green);
+        }
+
+        .solution-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .solution-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .solution-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-dark);
+            margin-bottom: 1rem;
+        }
+
+        .solution-description {
+            font-size: 1rem;
+            color: var(--gray-dark);
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .solution-link {
+            color: var(--primary-blue);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .solution-link:hover {
+            gap: 1rem;
+        }
+
+        /* Technology Section */
+        .technology {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f1f8e9 0%, #e1f5fe 100%);
+        }
+
+        .tech-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .tech-visual {
+            position: relative;
+        }
+
+        .tech-layers {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .tech-layer {
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-green);
+            margin-bottom: 1.5rem;
+            background: rgba(232, 245, 233, 0.3);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .tech-layer:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.2);
+        }
+
+        .tech-layer-title {
+            font-weight: 700;
+            color: var(--gray-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .tech-layer-desc {
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+            opacity: 0.7;
+        }
+
+        .tech-features {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .tech-feature {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--light-green), var(--light-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gray-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-content p {
+            color: var(--gray-dark);
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        /* Competitive Advantage */
+        .advantage {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .advantage-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .advantage-card {
+            background: linear-gradient(135deg, rgba(232, 245, 233, 0.4), rgba(227, 242, 253, 0.4));
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .advantage-card:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.15);
+        }
+
+        .advantage-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .advantage-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gray-dark);
+            margin-bottom: 1rem;
+        }
+
+        .advantage-desc {
+            color: var(--gray-dark);
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: white;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-blue);
+            padding: 1.2rem 3rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gray-dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-brand-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .footer-description {
+            opacity: 0.8;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-container {
+                grid-template-columns: 1fr;
+            }
+
+            .advantage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">☀️</div>
+                <span>ARKANEMI</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">Schedule Consultation</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Illuminate Climate Risk with Precision Intelligence</h1>
+                <p class="hero-subtitle">Transforming Uncertainty into Quantified Insight</p>
+                <p class="hero-description">
+                    ARKANEMI combines geospatial data, predictive analytics, and domain expertise to deliver actionable climate intelligence for insurance, agriculture, and health sectors globally.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn-primary">Schedule Consultation</a>
+                    <a href="#solutions" class="btn-secondary">Explore Solutions</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-card visual-card-1">
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--primary-green), var(--light-green));">🏥</div>
+                    <div class="card-title">Disease Surveillance</div>
+                    <div class="card-stat">90%+</div>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Outbreak Prediction Accuracy</p>
+                </div>
+                <div class="visual-card visual-card-2">
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));">🌾</div>
+                    <div class="card-title">Crop Risk Assessment</div>
+                    <div class="card-stat">85%+</div>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Claim Prediction Precision</p>
+                </div>
+                <div class="visual-card visual-card-3">
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-gold), #ffb74d);">💼</div>
+                    <div class="card-title">Financial Risk</div>
+                    <div class="card-stat">95%+</div>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Catastrophe Model Accuracy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <p class="trust-text">Powered by Advanced Geospatial Intelligence</p>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">$45B+</div>
+                <div class="stat-label">Market Opportunity</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Global Sectors</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">Real-Time</div>
+                <div class="stat-label">Predictive Analytics</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">Global</div>
+                <div class="stat-label">Coverage Scale</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions" id="solutions">
+        <div class="section-header">
+            <p class="section-label">DOMAIN SOLUTIONS</p>
+            <h2 class="section-title">Climate Intelligence Across Critical Sectors</h2>
+            <p class="section-description">
+                Purpose-built solutions combining satellite imagery, AI-driven analytics, and domain expertise to address sector-specific climate challenges.
+            </p>
+        </div>
+        <div class="solutions-grid">
+            <div class="solution-card">
+                <div class="solution-icon">💼</div>
+                <h3 class="solution-title">Financial Risk & Insurance</h3>
+                <p class="solution-description">
+                    Real-time catastrophe modeling, climate stress testing, and portfolio risk analytics for insurers, reinsurers, and financial institutions. Predict disaster impacts before they occur.
+                </p>
+                <a href="#" class="solution-link">Explore Solutions →</a>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon">🌾</div>
+                <h3 class="solution-title">Agriculture & Food Security</h3>
+                <p class="solution-description">
+                    Automated crop insurance claims, precision agriculture monitoring, and climate-smart advisory systems. Protect farmer livelihoods and ensure food security at scale.
+                </p>
+                <a href="#" class="solution-link">Explore Solutions →</a>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon">🏥</div>
+                <h3 class="solution-title">Health & Disease Surveillance</h3>
+                <p class="solution-description">
+                    Geospatial disease tracking, outbreak prediction, and healthcare resource optimization. Enable rapid response to public health emergencies and climate-sensitive diseases.
+                </p>
+                <a href="#" class="solution-link">Explore Solutions →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="technology" id="technology">
+        <div class="section-header">
+            <p class="section-label">TECHNOLOGY PLATFORM</p>
+            <h2 class="section-title">Multi-Layered Intelligence Architecture</h2>
+            <p class="section-description">
+                Enterprise-grade platform combining real-time data fusion, predictive modeling, and actionable insights.
+            </p>
+        </div>
+        <div class="tech-container">
+            <div class="tech-visual">
+                <div class="tech-layers">
+                    <div class="tech-layer" style="border-color: var(--primary-blue);">
+                        <div class="tech-layer-title">🛰️ Data Ingestion Layer</div>
+                        <p class="tech-layer-desc">Advanced machine learning models for pattern recognition, predictive analytics, and risk scoring</p>
+                    </div>
+                    <div class="tech-layer" style="border-color: var(--accent-gold);">
+                        <div class="tech-layer-title">📊 Analytics & Insights</div>
+                        <p class="tech-layer-desc">Real-time dashboards, scenario modeling, API-first architecture for seamless integration</p>
+                    </div>
+                    <div class="tech-layer" style="border-color: var(--light-blue);">
+                        <div class="tech-layer-title">🔒 Enterprise Security</div>
+                        <p class="tech-layer-desc">Bank-grade encryption, compliance frameworks, audit trails, and data sovereignty</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-features">
+                <div class="tech-feature">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-content">
+                        <h3>Predictive Precision</h3>
+                        <p>AI models achieving 85-95% accuracy across disaster prediction, crop health assessment, and disease outbreak forecasting through continuous learning and validation.</p>
+                    </div>
+                </div>
+                <div class="tech-feature">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-content">
+                        <h3>Real-Time Processing</h3>
+                        <p>Sub-minute response times for critical alerts. Process terabytes of satellite and sensor data to deliver actionable insights when they matter most.</p>
+                    </div>
+                </div>
+                <div class="tech-feature">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-content">
+                        <h3>Seamless Integration</h3>
+                        <p>RESTful APIs and pre-built connectors for leading enterprise platforms. Deploy in weeks, not months, with minimal disruption to existing workflows.</p>
+                    </div>
+                </div>
+                <div class="tech-feature">
+                    <div class="feature-icon">🌍</div>
+                    <div class="feature-content">
+                        <h3>Global Scalability</h3>
+                        <p>Cloud-native architecture supporting operations across continents. From hyperlocal village-level insights to global portfolio analytics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Advantage -->
+    <section class="advantage" id="about">
+        <div class="advantage-container">
+            <div class="section-header">
+                <p class="section-label">COMPETITIVE ADVANTAGE</p>
+                <h2 class="section-title">Why ARKANEMI Stands Apart</h2>
+                <p class="section-description">
+                    Built on four foundational pillars that create sustainable competitive moats and deliver measurable value to our partners.
+                </p>
+            </div>
+            <div class="advantage-grid">
+                <div class="advantage-card">
+                    <div class="advantage-number">01</div>
+                    <h3 class="advantage-title">Multi-Domain Convergence</h3>
+                    <p class="advantage-desc">
+                        Unlike single-sector specialists, ARKANEMI's cross-domain expertise enables us to identify patterns and insights invisible to competitors. Our models trained on insurance data improve agricultural predictions, and vice versa—creating compounding accuracy advantages.
+                    </p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-number">02</div>
+                    <h3 class="advantage-title">Real-Time Predictive Intelligence</h3>
+                    <p class="advantage-desc">
+                        While incumbents rely on historical analysis, ARKANEMI predicts tomorrow's disasters today. Our AI-powered platform processes live satellite, weather, and sensor data to forecast climate events 72+ hours ahead with industry-leading accuracy.
+                    </p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-number">03</div>
+                    <h3 class="advantage-title">Data Network Effects</h3>
+                    <p class="advantage-desc">
+                        Every claim validated, crop monitored, and outbreak tracked strengthens our models. With each customer interaction, ARKANEMI's intelligence compounds—creating a self-reinforcing moat that becomes insurmountable over time.
+                    </p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-number">04</div>
+                    <h3 class="advantage-title">Global Infrastructure, Local Precision</h3>
+                    <p class="advantage-desc">
+                        Leveraging free satellite data (Sentinel, ISRO Bhuvan) and open-source frameworks, we deliver enterprise-grade solutions at 60% lower cost than competitors—while maintaining hyperlocal accuracy through region-specific model training.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases by Industry -->
+    <section class="solutions" id="industries" style="background: linear-gradient(135deg, #f1f8e9 0%, #e1f5fe 100%);">
+        <div class="section-header">
+            <p class="section-label">INDUSTRY APPLICATIONS</p>
+            <h2 class="section-title">Real-World Impact Across Sectors</h2>
+            <p class="section-description">
+                See how ARKANEMI's platform addresses critical challenges for leading organizations worldwide.
+            </p>
+        </div>
+        <div class="solutions-grid">
+            <div class="solution-card">
+                <div class="solution-icon">🏦</div>
+                <h3 class="solution-title">Insurance & Reinsurance</h3>
+                <p class="solution-description">
+                    <strong>Catastrophe Modeling:</strong> Predict hurricane, flood, and wildfire impacts with 90%+ accuracy<br><br>
+                    <strong>Claims Automation:</strong> Reduce assessment time from 45 days to 2 minutes<br><br>
+                    <strong>Portfolio Optimization:</strong> Identify concentration risks before they materialize
+                </p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon">🏛️</div>
+                <h3 class="solution-title">Banking & Asset Management</h3>
+                <p class="solution-description">
+                    <strong>Climate Stress Testing:</strong> TCFD-compliant scenario analysis and reporting<br><br>
+                    <strong>Real Estate Risk:</strong> Property-level climate scoring for mortgage lending<br><br>
+                    <strong>Credit Assessment:</strong> Incorporate physical climate risk into loan decisions
+                </p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon">🌾</div>
+                <h3 class="solution-title">Agricultural Enterprises</h3>
+                <p class="solution-description">
+                    <strong>Crop Insurance:</strong> Automated claim validation using satellite imagery<br><br>
+                    <strong>Yield Prediction:</strong> Pre-season risk scoring and harvest forecasting<br><br>
+                    <strong>Supply Chain:</strong> Climate-informed procurement and logistics planning
+                </p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon">🏛️</div>
+                <h3 class="solution-title">Government Agencies</h3>
+                <p class="solution-description">
+                    <strong>Food Security:</strong> National-level crop monitoring and subsidy optimization<br><br>
+                    <strong>Disaster Response:</strong> Early warning systems and resource allocation<br><br>
+                    <strong>Policy Planning:</strong> Data-driven climate adaptation strategies
+                </p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon">🏥</div>
+                <h3 class="solution-title">Healthcare Systems</h3>
+                <p class="solution-description">
+                    <strong>Disease Surveillance:</strong> Real-time outbreak tracking and prediction<br><br>
+                    <strong>Resource Planning:</strong> Climate-sensitive healthcare capacity modeling<br><br>
+                    <strong>Intervention Targeting:</strong> Geospatial optimization of vaccination campaigns
+                </p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon">🏭</div>
+                <h3 class="solution-title">Corporate Risk Management</h3>
+                <p class="solution-description">
+                    <strong>Facility Risk:</strong> Climate exposure assessment for operations<br><br>
+                    <strong>Supply Chain:</strong> Multi-tier supplier climate vulnerability analysis<br><br>
+                    <strong>Business Continuity:</strong> Scenario planning and resilience strategies
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Features -->
+    <section class="technology" style="background: white;">
+        <div class="section-header">
+            <p class="section-label">PLATFORM FEATURES</p>
+            <h2 class="section-title">Enterprise-Grade Capabilities</h2>
+            <p class="section-description">
+                Comprehensive toolkit designed for mission-critical operations and regulatory compliance.
+            </p>
+        </div>
+        <div class="tech-container" style="max-width: 1400px; margin: 0 auto;">
+            <div class="tech-features" style="grid-template-columns: repeat(2, 1fr); display: grid; gap: 2rem;">
+                <div class="tech-feature">
+                    <div class="feature-icon">📡</div>
+                    <div class="feature-content">
+                        <h3>Multi-Source Data Fusion</h3>
+                        <p>Integrate satellite imagery (Sentinel, Landsat, ISRO), weather data (NOAA, IMD), IoT sensors, and proprietary ground truth for comprehensive intelligence.</p>
+                    </div>
+                </div>
+                <div class="tech-feature">
+                    <div class="feature-icon">🤖</div>
+                    <div class="feature-content">
+                        <h3>Advanced ML Models</h3>
+                        <p>Proprietary algorithms for crop health assessment, disaster impact prediction, and disease outbreak forecasting—continuously improving through active learning.</p>
+                    </div>
+                </div>
+                <div class="tech-feature">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-content">
+                        <h3>Interactive Dashboards</h3>
+                        <p>Customizable visualizations, real-time alerts, and scenario modeling tools. Export reports in formats required for regulatory compliance and stakeholder communication.</p>
+                    </div>
+                </div>
+                <div class="tech-feature">
+                    <div class="feature-icon">🔌</div>
+                    <div class="feature-content">
+                        <h3>API-First Architecture</h3>
+                        <p>RESTful APIs with comprehensive documentation. Pre-built integrations for major insurance platforms, banking systems, and agricultural management tools.</p>
+                    </div>
+                </div>
+                <div class="tech-feature">
+                    <div class="feature-icon">🔐</div>
+                    <div class="feature-content">
+                        <h3>Security & Compliance</h3>
+                        <p>SOC 2 Type II, ISO 27001 certified. Support for GDPR, HIPAA, and regional data protection regulations. Complete audit trails and data sovereignty options.</p>
+                    </div>
+                </div>
+                <div class="tech-feature">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-content">
+                        <h3>Multi-Platform Access</h3>
+                        <p>Web dashboard, mobile apps (iOS/Android), and field verification tools. Offline capabilities for operations in connectivity-limited regions.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-visual" style="display: flex; align-items: center; justify-content: center;">
+                <div style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 15px 40px rgba(0,0,0,0.1); max-width: 500px;">
+                    <h3 style="font-size: 1.8rem; font-weight: 700; color: var(--gray-dark); margin-bottom: 2rem; text-align: center;">Technical Specifications</h3>
+                    <div style="display: grid; gap: 1.5rem;">
+                        <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
+                            <div style="font-weight: 700; color: var(--primary-green); margin-bottom: 0.5rem;">Data Processing</div>
+                            <div style="font-size: 0.95rem; opacity: 0.8;">10TB+ daily satellite imagery processing</div>
+                        </div>
+                        <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
+                            <div style="font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem;">Response Time</div>
+                            <div style="font-size: 0.95rem; opacity: 0.8;">Sub-minute for critical risk alerts</div>
+                        </div>
+                        <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
+                            <div style="font-weight: 700; color: var(--primary-green); margin-bottom: 0.5rem;">Model Accuracy</div>
+                            <div style="font-size: 0.95rem; opacity: 0.8;">85-95% across all prediction scenarios</div>
+                        </div>
+                        <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
+                            <div style="font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem;">Global Coverage</div>
+                            <div style="font-size: 0.95rem; opacity: 0.8;">Village-level precision worldwide</div>
+                        </div>
+                        <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
+                            <div style="font-weight: 700; color: var(--primary-green); margin-bottom: 0.5rem;">Uptime SLA</div>
+                            <div style="font-size: 0.95rem; opacity: 0.8;">99.9% availability guarantee</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-container">
+            <h2>Transform Climate Uncertainty into Strategic Advantage</h2>
+            <p>Join leading organizations leveraging ARKANEMI's intelligence platform to quantify risk, optimize operations, and build resilience.</p>
+            <a href="mailto:contact@arkanemi.com" class="btn-white">Schedule Your Consultation</a>
+            <p style="margin-top: 2rem; font-size: 0.95rem; opacity: 0.9;">
+                📧 contact@arkanemi.com &nbsp;&nbsp;|&nbsp;&nbsp; 🌐 Available globally
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <div class="footer-brand">
+                    <div class="footer-brand-icon">☀️</div>
+                    <span>ARKANEMI</span>
+                </div>
+                <p class="footer-description">
+                    Derived from Sanskrit roots "Arka" (sun, radiance) and "Nemi" (rim, wheel, orbit), ARKANEMI represents illumination through cyclical intelligence—bringing clarity to climate uncertainty through continuous observation and learning.
+                </p>
+                <p style="opacity: 0.7; font-size: 0.9rem; margin-top: 1rem;">
+                    Illuminating climate risk with precision intelligence.
+                </p>
+            </div>
+            <div>
+                <h4 class="footer-title">Solutions</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Financial Risk</a></li>
+                    <li><a href="#">Agriculture</a></li>
+                    <li><a href="#">Health</a></li>
+                    <li><a href="#">Government</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">API Documentation</a></li>
+                    <li><a href="#">Security</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ARKANEMI. All rights reserved. | Climate Risk Intelligence Platform</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.solution-card, .tech-feature, .advantage-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>-desc">Multi-source integration: Satellite imagery, weather data, IoT sensors, ground truth validation</p>
+                    </div>
+                    <div class="tech-layer" style="border-color: var(--primary-green);">
+                        <div class="tech-layer-title">🧠 AI/ML Processing Engine</div>
+                        <p class="tech-layer
