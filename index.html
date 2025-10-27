@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +38,7 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             transition: all 0.3s ease;
         }
@@ -158,9 +159,19 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
         }
 
         .hero-container {
@@ -253,7 +264,7 @@
             background: white;
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
         }
 
@@ -489,7 +500,7 @@
             background: white;
             border-radius: 20px;
             padding: 2.5rem;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         }
 
         .tech-layer {
@@ -645,12 +656,12 @@
             font-size: 1.15rem;
             display: inline-block;
             transition: all 0.3s;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
         }
 
         .btn-white:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
 
         /* Footer */
@@ -723,7 +734,7 @@
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             opacity: 0.7;
         }
 
@@ -763,6 +774,15 @@
                 display: none;
             }
 
+            .nav-container>div:last-child {
+                gap: 0.8rem !important;
+            }
+
+            .nav-container>div:last-child>div:first-child {
+                font-size: 0.8rem !important;
+                padding: 0.4rem 0.8rem !important;
+            }
+
             .hero-content h1 {
                 font-size: 2.5rem;
             }
@@ -777,6 +797,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav>
@@ -791,7 +812,16 @@
                 <li><a href="#industries">Industries</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
-            <a href="#contact" class="cta-button">Schedule Consultation</a>
+            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                <div
+                    style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(21, 101, 192, 0.1)); border-radius: 20px; font-size: 0.9rem; font-weight: 600; color: var(--gray-dark); border: 1px solid rgba(46, 125, 50, 0.2);">
+                    <span style="font-size: 1.2rem;">👁️</span>
+                    <span id="visitorCount"
+                        style="background: linear-gradient(135deg, var(--primary-green), var(--primary-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">0</span>
+                    <span style="opacity: 0.7;">visitors</span>
+                </div>
+                <a href="#contact" class="cta-button">Schedule Consultation</a>
+            </div>
         </div>
     </nav>
 
@@ -802,7 +832,8 @@
                 <h1>Illuminate Climate Risk with Precision Intelligence</h1>
                 <p class="hero-subtitle">Transforming Uncertainty into Quantified Insight</p>
                 <p class="hero-description">
-                    ARKANEMI combines geospatial data, predictive analytics, and domain expertise to deliver actionable climate intelligence for insurance, agriculture, and health sectors globally.
+                    ARKANEMI combines geospatial data, predictive analytics, and domain expertise to deliver actionable
+                    climate intelligence for insurance, agriculture, and health sectors globally.
                 </p>
                 <div class="hero-actions">
                     <a href="#contact" class="btn-primary">Schedule Consultation</a>
@@ -811,19 +842,22 @@
             </div>
             <div class="hero-visual">
                 <div class="visual-card visual-card-1">
-                    <div class="card-icon" style="background: linear-gradient(135deg, var(--primary-green), var(--light-green));">🏥</div>
+                    <div class="card-icon"
+                        style="background: linear-gradient(135deg, var(--primary-green), var(--light-green));">🏥</div>
                     <div class="card-title">Disease Surveillance</div>
                     <div class="card-stat">90%+</div>
                     <p style="opacity: 0.7; font-size: 0.9rem;">Outbreak Prediction Accuracy</p>
                 </div>
                 <div class="visual-card visual-card-2">
-                    <div class="card-icon" style="background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));">🌾</div>
+                    <div class="card-icon"
+                        style="background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));">🌾</div>
                     <div class="card-title">Crop Risk Assessment</div>
                     <div class="card-stat">85%+</div>
                     <p style="opacity: 0.7; font-size: 0.9rem;">Claim Prediction Precision</p>
                 </div>
                 <div class="visual-card visual-card-3">
-                    <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-gold), #ffb74d);">💼</div>
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-gold), #ffb74d);">💼
+                    </div>
                     <div class="card-title">Financial Risk</div>
                     <div class="card-stat">95%+</div>
                     <p style="opacity: 0.7; font-size: 0.9rem;">Catastrophe Model Accuracy</p>
@@ -861,7 +895,8 @@
             <p class="section-label">DOMAIN SOLUTIONS</p>
             <h2 class="section-title">Climate Intelligence Across Critical Sectors</h2>
             <p class="section-description">
-                Purpose-built solutions combining satellite imagery, AI-driven analytics, and domain expertise to address sector-specific climate challenges.
+                Purpose-built solutions combining satellite imagery, AI-driven analytics, and domain expertise to
+                address sector-specific climate challenges.
             </p>
         </div>
         <div class="solutions-grid">
@@ -869,7 +904,8 @@
                 <div class="solution-icon">💼</div>
                 <h3 class="solution-title">Financial Risk & Insurance</h3>
                 <p class="solution-description">
-                    Real-time catastrophe modeling, climate stress testing, and portfolio risk analytics for insurers, reinsurers, and financial institutions. Predict disaster impacts before they occur.
+                    Real-time catastrophe modeling, climate stress testing, and portfolio risk analytics for insurers,
+                    reinsurers, and financial institutions. Predict disaster impacts before they occur.
                 </p>
                 <a href="#" class="solution-link">Explore Solutions →</a>
             </div>
@@ -877,7 +913,8 @@
                 <div class="solution-icon">🌾</div>
                 <h3 class="solution-title">Agriculture & Food Security</h3>
                 <p class="solution-description">
-                    Automated crop insurance claims, precision agriculture monitoring, and climate-smart advisory systems. Protect farmer livelihoods and ensure food security at scale.
+                    Automated crop insurance claims, precision agriculture monitoring, and climate-smart advisory
+                    systems. Protect farmer livelihoods and ensure food security at scale.
                 </p>
                 <a href="#" class="solution-link">Explore Solutions →</a>
             </div>
@@ -885,7 +922,8 @@
                 <div class="solution-icon">🏥</div>
                 <h3 class="solution-title">Health & Disease Surveillance</h3>
                 <p class="solution-description">
-                    Geospatial disease tracking, outbreak prediction, and healthcare resource optimization. Enable rapid response to public health emergencies and climate-sensitive diseases.
+                    Geospatial disease tracking, outbreak prediction, and healthcare resource optimization. Enable rapid
+                    response to public health emergencies and climate-sensitive diseases.
                 </p>
                 <a href="#" class="solution-link">Explore Solutions →</a>
             </div>
@@ -906,15 +944,18 @@
                 <div class="tech-layers">
                     <div class="tech-layer" style="border-color: var(--primary-blue);">
                         <div class="tech-layer-title">🛰️ Data Ingestion Layer</div>
-                        <p class="tech-layer-desc">Advanced machine learning models for pattern recognition, predictive analytics, and risk scoring</p>
+                        <p class="tech-layer-desc">Advanced machine learning models for pattern recognition, predictive
+                            analytics, and risk scoring</p>
                     </div>
                     <div class="tech-layer" style="border-color: var(--accent-gold);">
                         <div class="tech-layer-title">📊 Analytics & Insights</div>
-                        <p class="tech-layer-desc">Real-time dashboards, scenario modeling, API-first architecture for seamless integration</p>
+                        <p class="tech-layer-desc">Real-time dashboards, scenario modeling, API-first architecture for
+                            seamless integration</p>
                     </div>
                     <div class="tech-layer" style="border-color: var(--light-blue);">
                         <div class="tech-layer-title">🔒 Enterprise Security</div>
-                        <p class="tech-layer-desc">Bank-grade encryption, compliance frameworks, audit trails, and data sovereignty</p>
+                        <p class="tech-layer-desc">Bank-grade encryption, compliance frameworks, audit trails, and data
+                            sovereignty</p>
                     </div>
                 </div>
             </div>
@@ -923,28 +964,32 @@
                     <div class="feature-icon">🎯</div>
                     <div class="feature-content">
                         <h3>Predictive Precision</h3>
-                        <p>AI models achieving 85-95% accuracy across disaster prediction, crop health assessment, and disease outbreak forecasting through continuous learning and validation.</p>
+                        <p>AI models achieving 85-95% accuracy across disaster prediction, crop health assessment, and
+                            disease outbreak forecasting through continuous learning and validation.</p>
                     </div>
                 </div>
                 <div class="tech-feature">
                     <div class="feature-icon">⚡</div>
                     <div class="feature-content">
                         <h3>Real-Time Processing</h3>
-                        <p>Sub-minute response times for critical alerts. Process terabytes of satellite and sensor data to deliver actionable insights when they matter most.</p>
+                        <p>Sub-minute response times for critical alerts. Process terabytes of satellite and sensor data
+                            to deliver actionable insights when they matter most.</p>
                     </div>
                 </div>
                 <div class="tech-feature">
                     <div class="feature-icon">🔄</div>
                     <div class="feature-content">
                         <h3>Seamless Integration</h3>
-                        <p>RESTful APIs and pre-built connectors for leading enterprise platforms. Deploy in weeks, not months, with minimal disruption to existing workflows.</p>
+                        <p>RESTful APIs and pre-built connectors for leading enterprise platforms. Deploy in weeks, not
+                            months, with minimal disruption to existing workflows.</p>
                     </div>
                 </div>
                 <div class="tech-feature">
                     <div class="feature-icon">🌍</div>
                     <div class="feature-content">
                         <h3>Global Scalability</h3>
-                        <p>Cloud-native architecture supporting operations across continents. From hyperlocal village-level insights to global portfolio analytics.</p>
+                        <p>Cloud-native architecture supporting operations across continents. From hyperlocal
+                            village-level insights to global portfolio analytics.</p>
                     </div>
                 </div>
             </div>
@@ -958,7 +1003,8 @@
                 <p class="section-label">COMPETITIVE ADVANTAGE</p>
                 <h2 class="section-title">Why ARKANEMI Stands Apart</h2>
                 <p class="section-description">
-                    Built on four foundational pillars that create sustainable competitive moats and deliver measurable value to our partners.
+                    Built on four foundational pillars that create sustainable competitive moats and deliver measurable
+                    value to our partners.
                 </p>
             </div>
             <div class="advantage-grid">
@@ -966,28 +1012,36 @@
                     <div class="advantage-number">01</div>
                     <h3 class="advantage-title">Multi-Domain Convergence</h3>
                     <p class="advantage-desc">
-                        Unlike single-sector specialists, ARKANEMI's cross-domain expertise enables us to identify patterns and insights invisible to competitors. Our models trained on insurance data improve agricultural predictions, and vice versa—creating compounding accuracy advantages.
+                        Unlike single-sector specialists, ARKANEMI's cross-domain expertise enables us to identify
+                        patterns and insights invisible to competitors. Our models trained on insurance data improve
+                        agricultural predictions, and vice versa—creating compounding accuracy advantages.
                     </p>
                 </div>
                 <div class="advantage-card">
                     <div class="advantage-number">02</div>
                     <h3 class="advantage-title">Real-Time Predictive Intelligence</h3>
                     <p class="advantage-desc">
-                        While incumbents rely on historical analysis, ARKANEMI predicts tomorrow's disasters today. Our AI-powered platform processes live satellite, weather, and sensor data to forecast climate events 72+ hours ahead with industry-leading accuracy.
+                        While incumbents rely on historical analysis, ARKANEMI predicts tomorrow's disasters today. Our
+                        AI-powered platform processes live satellite, weather, and sensor data to forecast climate
+                        events 72+ hours ahead with industry-leading accuracy.
                     </p>
                 </div>
                 <div class="advantage-card">
                     <div class="advantage-number">03</div>
                     <h3 class="advantage-title">Data Network Effects</h3>
                     <p class="advantage-desc">
-                        Every claim validated, crop monitored, and outbreak tracked strengthens our models. With each customer interaction, ARKANEMI's intelligence compounds—creating a self-reinforcing moat that becomes insurmountable over time.
+                        Every claim validated, crop monitored, and outbreak tracked strengthens our models. With each
+                        customer interaction, ARKANEMI's intelligence compounds—creating a self-reinforcing moat that
+                        becomes insurmountable over time.
                     </p>
                 </div>
                 <div class="advantage-card">
                     <div class="advantage-number">04</div>
                     <h3 class="advantage-title">Global Infrastructure, Local Precision</h3>
                     <p class="advantage-desc">
-                        Leveraging free satellite data (Sentinel, ISRO Bhuvan) and open-source frameworks, we deliver enterprise-grade solutions at 60% lower cost than competitors—while maintaining hyperlocal accuracy through region-specific model training.
+                        Leveraging free satellite data (Sentinel, ISRO Bhuvan) and open-source frameworks, we deliver
+                        enterprise-grade solutions at 60% lower cost than competitors—while maintaining hyperlocal
+                        accuracy through region-specific model training.
                     </p>
                 </div>
             </div>
@@ -1008,7 +1062,8 @@
                 <div class="solution-icon">🏦</div>
                 <h3 class="solution-title">Insurance & Reinsurance</h3>
                 <p class="solution-description">
-                    <strong>Catastrophe Modeling:</strong> Predict hurricane, flood, and wildfire impacts with 90%+ accuracy<br><br>
+                    <strong>Catastrophe Modeling:</strong> Predict hurricane, flood, and wildfire impacts with 90%+
+                    accuracy<br><br>
                     <strong>Claims Automation:</strong> Reduce assessment time from 45 days to 2 minutes<br><br>
                     <strong>Portfolio Optimization:</strong> Identify concentration risks before they materialize
                 </p>
@@ -1076,67 +1131,87 @@
                     <div class="feature-icon">📡</div>
                     <div class="feature-content">
                         <h3>Multi-Source Data Fusion</h3>
-                        <p>Integrate satellite imagery (Sentinel, Landsat, ISRO), weather data (NOAA, IMD), IoT sensors, and proprietary ground truth for comprehensive intelligence.</p>
+                        <p>Integrate satellite imagery (Sentinel, Landsat, ISRO), weather data (NOAA, IMD), IoT sensors,
+                            and proprietary ground truth for comprehensive intelligence.</p>
                     </div>
                 </div>
                 <div class="tech-feature">
                     <div class="feature-icon">🤖</div>
                     <div class="feature-content">
                         <h3>Advanced ML Models</h3>
-                        <p>Proprietary algorithms for crop health assessment, disaster impact prediction, and disease outbreak forecasting—continuously improving through active learning.</p>
+                        <p>Proprietary algorithms for crop health assessment, disaster impact prediction, and disease
+                            outbreak forecasting—continuously improving through active learning.</p>
                     </div>
                 </div>
                 <div class="tech-feature">
                     <div class="feature-icon">📊</div>
                     <div class="feature-content">
                         <h3>Interactive Dashboards</h3>
-                        <p>Customizable visualizations, real-time alerts, and scenario modeling tools. Export reports in formats required for regulatory compliance and stakeholder communication.</p>
+                        <p>Customizable visualizations, real-time alerts, and scenario modeling tools. Export reports in
+                            formats required for regulatory compliance and stakeholder communication.</p>
                     </div>
                 </div>
                 <div class="tech-feature">
                     <div class="feature-icon">🔌</div>
                     <div class="feature-content">
                         <h3>API-First Architecture</h3>
-                        <p>RESTful APIs with comprehensive documentation. Pre-built integrations for major insurance platforms, banking systems, and agricultural management tools.</p>
+                        <p>RESTful APIs with comprehensive documentation. Pre-built integrations for major insurance
+                            platforms, banking systems, and agricultural management tools.</p>
                     </div>
                 </div>
                 <div class="tech-feature">
                     <div class="feature-icon">🔐</div>
                     <div class="feature-content">
                         <h3>Security & Compliance</h3>
-                        <p>SOC 2 Type II, ISO 27001 certified. Support for GDPR, HIPAA, and regional data protection regulations. Complete audit trails and data sovereignty options.</p>
+                        <p>SOC 2 Type II, ISO 27001 certified. Support for GDPR, HIPAA, and regional data protection
+                            regulations. Complete audit trails and data sovereignty options.</p>
                     </div>
                 </div>
                 <div class="tech-feature">
                     <div class="feature-icon">📱</div>
                     <div class="feature-content">
                         <h3>Multi-Platform Access</h3>
-                        <p>Web dashboard, mobile apps (iOS/Android), and field verification tools. Offline capabilities for operations in connectivity-limited regions.</p>
+                        <p>Web dashboard, mobile apps (iOS/Android), and field verification tools. Offline capabilities
+                            for operations in connectivity-limited regions.</p>
                     </div>
                 </div>
             </div>
             <div class="tech-visual" style="display: flex; align-items: center; justify-content: center;">
-                <div style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 15px 40px rgba(0,0,0,0.1); max-width: 500px;">
-                    <h3 style="font-size: 1.8rem; font-weight: 700; color: var(--gray-dark); margin-bottom: 2rem; text-align: center;">Technical Specifications</h3>
+                <div
+                    style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 15px 40px rgba(0,0,0,0.1); max-width: 500px;">
+                    <h3
+                        style="font-size: 1.8rem; font-weight: 700; color: var(--gray-dark); margin-bottom: 2rem; text-align: center;">
+                        Technical Specifications</h3>
                     <div style="display: grid; gap: 1.5rem;">
-                        <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
-                            <div style="font-weight: 700; color: var(--primary-green); margin-bottom: 0.5rem;">Data Processing</div>
-                            <div style="font-size: 0.95rem; opacity: 0.8;">10TB+ daily satellite imagery processing</div>
+                        <div
+                            style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
+                            <div style="font-weight: 700; color: var(--primary-green); margin-bottom: 0.5rem;">Data
+                                Processing</div>
+                            <div style="font-size: 0.95rem; opacity: 0.8;">10TB+ daily satellite imagery processing
+                            </div>
                         </div>
-                        <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
-                            <div style="font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem;">Response Time</div>
+                        <div
+                            style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
+                            <div style="font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem;">Response
+                                Time</div>
                             <div style="font-size: 0.95rem; opacity: 0.8;">Sub-minute for critical risk alerts</div>
                         </div>
-                        <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
-                            <div style="font-weight: 700; color: var(--primary-green); margin-bottom: 0.5rem;">Model Accuracy</div>
+                        <div
+                            style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
+                            <div style="font-weight: 700; color: var(--primary-green); margin-bottom: 0.5rem;">Model
+                                Accuracy</div>
                             <div style="font-size: 0.95rem; opacity: 0.8;">85-95% across all prediction scenarios</div>
                         </div>
-                        <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
-                            <div style="font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem;">Global Coverage</div>
+                        <div
+                            style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
+                            <div style="font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem;">Global
+                                Coverage</div>
                             <div style="font-size: 0.95rem; opacity: 0.8;">Village-level precision worldwide</div>
                         </div>
-                        <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
-                            <div style="font-weight: 700; color: var(--primary-green); margin-bottom: 0.5rem;">Uptime SLA</div>
+                        <div
+                            style="padding: 1.5rem; background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(227, 242, 253, 0.5)); border-radius: 12px;">
+                            <div style="font-weight: 700; color: var(--primary-green); margin-bottom: 0.5rem;">Uptime
+                                SLA</div>
                             <div style="font-size: 0.95rem; opacity: 0.8;">99.9% availability guarantee</div>
                         </div>
                     </div>
@@ -1149,7 +1224,8 @@
     <section class="cta-section" id="contact">
         <div class="cta-container">
             <h2>Transform Climate Uncertainty into Strategic Advantage</h2>
-            <p>Join leading organizations leveraging ARKANEMI's intelligence platform to quantify risk, optimize operations, and build resilience.</p>
+            <p>Join leading organizations leveraging ARKANEMI's intelligence platform to quantify risk, optimize
+                operations, and build resilience.</p>
             <a href="mailto:contact@arkanemi.com" class="btn-white">Schedule Your Consultation</a>
             <p style="margin-top: 2rem; font-size: 0.95rem; opacity: 0.9;">
                 📧 contact@arkanemi.com &nbsp;&nbsp;|&nbsp;&nbsp; 🌐 Available globally
@@ -1166,7 +1242,9 @@
                     <span>ARKANEMI</span>
                 </div>
                 <p class="footer-description">
-                    Derived from Sanskrit roots "Arka" (sun, radiance) and "Nemi" (rim, wheel, orbit), ARKANEMI represents illumination through cyclical intelligence—bringing clarity to climate uncertainty through continuous observation and learning.
+                    Derived from Sanskrit roots "Arka" (sun, radiance) and "Nemi" (rim, wheel, orbit), ARKANEMI
+                    represents illumination through cyclical intelligence—bringing clarity to climate uncertainty
+                    through continuous observation and learning.
                 </p>
                 <p style="opacity: 0.7; font-size: 0.9rem; margin-top: 1rem;">
                     Illuminating climate risk with precision intelligence.
@@ -1206,6 +1284,20 @@
     </footer>
 
     <script>
+        // Visitor Counter using CountAPI
+        async function initVisitorCounter() {
+            try {
+                const response = await fetch('https://api.countapi.xyz/hit/arkanemi-climate-2025/visits');
+                const data = await response.json();
+                document.getElementById('visitorCount').textContent = data.value.toLocaleString();
+            } catch (error) {
+                console.error('Visitor counter error:', error);
+                document.getElementById('visitorCount').textContent = '1,000+';
+            }
+        }
+
+        initVisitorCounter();
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1221,7 +1313,7 @@
         });
 
         // Navbar background on scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
                 nav.style.background = 'rgba(255, 255, 255, 0.98)';
@@ -1238,7 +1330,7 @@
             rootMargin: '0px 0px -100px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
@@ -1256,8 +1348,9 @@
         });
     </script>
 </body>
+
 </html>-desc">Multi-source integration: Satellite imagery, weather data, IoT sensors, ground truth validation</p>
-                    </div>
-                    <div class="tech-layer" style="border-color: var(--primary-green);">
-                        <div class="tech-layer-title">🧠 AI/ML Processing Engine</div>
-                        <p class="tech-layer
+</div>
+<div class="tech-layer" style="border-color: var(--primary-green);">
+    <div class="tech-layer-title">🧠 AI/ML Processing Engine</div>
+    <p class="tech-layer
